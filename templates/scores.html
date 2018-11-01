@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+{% for entry in entries %}
+<p><strong>Province:</strong> {{ entry.province }} </p>
+<p><strong>Date:</strong>  {{ entry.date }} </p>
+<p><strong>Course:</strong> {{ entry.course }} </p>
+<p><strong>Par:</strong> {{ entry.par }} </p>
+<p><strong>Location:</strong> {{ entry.location }} </p>
+<p><strong>Gross Score:</strong>  {{ entry.gross_score }} </p>
+<p><strong>Handicap:</strong>  {{ entry.handicap }} </p>
+<p><strong>Net Score:</strong>  {{ entry.net_score }} </p>
+<p><strong>Weather:</strong> {{ entry.weather }} </p>
+{% endfor %}
+
+
+{% endblock %}
