@@ -15,24 +15,30 @@ def get_province_names():
     provinces = []
     for province in mongo.db.collection_names():
         if not province.startswith("system."):
-                province.append(province)
+                provinces.append(province)
     return provinces
 
 @app.route("/")
 def show_home():
-    return render_template("home.html")
+    return render_template("home.html", provinces=["Leinster", "Munster", "Connacht", "Ulster"])
     
 @app.route("/scores/<province>")
 def show_entries_by_province(province):
     entries = mongo.db[province].find()
-    return render_template("scores.html", entries = entries)
+    provinces = get_province_names()
+    return render_template("scores.html", entries = entries, provinces = provinces, province = province)
     
 @app.route("/add_entry", methods=["GET", "POST"])
 def add_entry():
-    return render_template("add_entry.html")
-    
-    
-    
+    if request.method == "POST":
+        form_entries = request.form.to_dict()
+        province = form_entries["province"]
+        mongo.db[province].insert_one(form_entries)
+        return redirect("/scores/"+province)
+    else:
+        provinces = get_province_names()
+        return render_template("add_entry.html", provinces=provinces)
+
     
     
     

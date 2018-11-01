@@ -1,17 +1,37 @@
-{% extends 'base.html' %} 
-{% block content %}
+{% extends 'base.html' %} {% block content %}
+<ul class="collapsible" data-collapsible="accordion">
+    {% for entry in entries %}
+    <li>
+        <div class="collapsible-header">
+            <div class="col s3">
+                <i class="material-icons">expand_more</i>
+                <span class="task_header col s9"></span>
+                <strong>{{entry.course}}, {{entry.location}}</strong> - {{entry.date}}
+            </div>
+        </div>
+        <div class="collapsible-body">
+            <span>
+                <strong>Par: </strong>{{entry.par}},
+            </span>
+            <span>
+                <strong>Gross Score: </strong>{{entry.gross_score}}, 
+            </span>
+            <span>
+                <strong>Net Score: </strong>{{entry.net_score}}, 
+            </span>
+            <span>
+                <strong>Handicap: </strong>{{entry.handicap}}, 
+            </span>
+            <span>
+                <strong>Weather: </strong>{{entry.weather}}
+            </span>
 
-{% for entry in entries %}
-<p><strong>Province:</strong> {{ entry.province }} </p>
-<p><strong>Date:</strong>  {{ entry.date }} </p>
-<p><strong>Course:</strong> {{ entry.course }} </p>
-<p><strong>Par:</strong> {{ entry.par }} </p>
-<p><strong>Location:</strong> {{ entry.location }} </p>
-<p><strong>Gross Score:</strong>  {{ entry.gross_score }} </p>
-<p><strong>Handicap:</strong>  {{ entry.handicap }} </p>
-<p><strong>Net Score:</strong>  {{ entry.net_score }} </p>
-<p><strong>Weather:</strong> {{ entry.weather }} </p>
-{% endfor %}
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 
 
+<a href="add_entry.html" class="material-icons">add</a>
+ 
 {% endblock %}
