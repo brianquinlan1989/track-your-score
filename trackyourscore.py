@@ -32,6 +32,7 @@ def show_entries_by_province(province):
 def add_entry():
     if request.method == "POST":
         form_entries = request.form.to_dict()
+        form_entries["net_score_name"] = int(request.form["gross_score_name"]) - int(request.form["handicap_name"])
         province = form_entries["province_name"]
         mongo.db[province].insert_one(form_entries)
         return redirect("/scores/"+province)
@@ -58,8 +59,12 @@ def edit_entry(province, entry_id):
         provinces = get_province_names() 
         return render_template("edit_entry.html", entry=the_entry, provinces=provinces)
 
-    
-        
+@app.route("/scores/<province>//delete", methods=["POST"])
+def delete_entry(province):
+    entry_id = request.form['entry_id']
+    mongo.db[province].remove({"_id":ObjectId(entry_id)})
+    return redirect(url_for("show_entries_by_province", province=province))
+  
     
 if __name__ == "__main__":
         app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)), debug=True)

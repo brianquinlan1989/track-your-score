@@ -2,10 +2,15 @@
 
 <h2>Province</h2>
 <hr>
+
+
 {% for p in provinces %}
-<p>
-    <a href="{{url_for("show_entries_by_province",province=p)}}" class="waves-effect waves-light btn-large"><i class="material-icons left">trending_flat</i>{{p}}</a>
-</p>
+<div>
+    
+    <p>
+        <a href="{{url_for("show_entries_by_province",province=p)}}"><img src="static/images/{{p}}.jpeg"></img>{{p}}</a>
+    </p>
+</div>
 {% endfor %}
 
 

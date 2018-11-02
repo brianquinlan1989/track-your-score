@@ -90,8 +90,8 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        due_date = Date.parse('{{entry.date_name}}');
-        $('#due_date').pickadate('picker').set('select', due_date, {format: "dd/mm/yyyy"}).trigger('change');
+        date_name = Date.parse('{{entry.date_name}}');
+        $('#date_name').pickadate('picker').set('select', due_date, {format: "dd/mm/yyyy"}).trigger('change');
     });    
 </script>
 

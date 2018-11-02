@@ -33,7 +33,7 @@
                 <strong>Weather: </strong>{{entry.weather_name}}
             </span>
             <div>
-                <a href="#modal1" class="delete_task_btn waves-effect waves-light btn btn_small modal-trigger">Delete</a>
+                <a href="#modal1" class="delete_entry_btn waves-effect waves-light btn btn_small modal-trigger" data-entryid={{entry._id}}>Delete</a>
             </div>
 
         </div>
@@ -44,4 +44,24 @@
 <div>
     <a href="{{ url_for("add_entry")}}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
 </div>
+
+<div id="modal1" class="modal center-align">
+        <div class="modal-content">
+            <h4>Are You Sure????</h4>
+        </div>
+    
+        <div class="row modal-footer">
+        <form action="{{ url_for('delete_entry', province=province ) }}" method="POST" class="col s6 center-align">
+                <input id="hidden-entry-id" type="hidden" name="entry_id">
+                <button class="testing btn waves-effect waves-light margin-left" type="submit">Yes
+                    <i class="material-icons right">thumb_up</i>
+                </button>
+            </form>    
+            <form action="{{ url_for('show_entries_by_province', province=province) }}" method="GET" class="col s6 center-align">
+                <button class="btn waves-effect waves-light margin-left" type="submit">Go Back
+                    <i class="material-icons right">thumb_down</i>
+                </button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
