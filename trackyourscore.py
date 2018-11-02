@@ -32,15 +32,34 @@ def show_entries_by_province(province):
 def add_entry():
     if request.method == "POST":
         form_entries = request.form.to_dict()
-        province = form_entries["province"]
+        province = form_entries["province_name"]
         mongo.db[province].insert_one(form_entries)
         return redirect("/scores/"+province)
     else:
         provinces = get_province_names()
         return render_template("add_entry.html", provinces=provinces)
+        
+@app.route("/scores/<province>/<entry_id>/edit", methods=["GET", "POST"])
+def edit_entry(province, entry_id):
+    if request.method == "POST":
+        form_entries = request.form.to_dict()
+        mongo.db[province].update({"_id": ObjectId(entry_id)}, form_entries)
+        
+        if form_entries["province_name"] != province:
+            the_entry = mongo.db[province].find_one({"_id": ObjectId(entry_id)})
+            mongo.db[province].remove(the_entry)
+            mongo.db[form_entries["province_name"]].insert(the_entry)
+            
+        return redirect(
+            url_for("show_entries_by_province", province=form_entries["province_name"]))
+        
+    else:
+        the_entry = mongo.db[province].find_one({"_id": ObjectId(entry_id)})
+        provinces = get_province_names() 
+        return render_template("edit_entry.html", entry=the_entry, provinces=provinces)
 
     
-    
+        
     
 if __name__ == "__main__":
         app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)), debug=True)

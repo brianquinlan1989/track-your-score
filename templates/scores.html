@@ -5,33 +5,43 @@
         <div class="collapsible-header">
             <div class="col s3">
                 <i class="material-icons">expand_more</i>
+                
+               
+
+
                 <span class="task_header col s9"></span>
-                <strong>{{entry.course}}, {{entry.location}}</strong> - {{entry.date}}
+                <strong>{{entry.course_name}}, {{entry.location_name}}</strong> - {{entry.date_name}}
             </div>
+        </div>
+        <div>
+            <a href= "{{url_for('edit_entry', province=entry.province_name, entry_id=entry._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
         </div>
         <div class="collapsible-body">
             <span>
-                <strong>Par: </strong>{{entry.par}},
+                <strong>Par: </strong>{{entry.par_name}},
             </span>
             <span>
-                <strong>Gross Score: </strong>{{entry.gross_score}}, 
+                <strong>Gross Score: </strong>{{entry.gross_score_name}}, 
             </span>
             <span>
-                <strong>Net Score: </strong>{{entry.net_score}}, 
+                <strong>Net Score: </strong>{{entry.net_score_name}}, 
             </span>
             <span>
-                <strong>Handicap: </strong>{{entry.handicap}}, 
+                <strong>Handicap: </strong>{{entry.handicap_name}}, 
             </span>
             <span>
-                <strong>Weather: </strong>{{entry.weather}}
+                <strong>Weather: </strong>{{entry.weather_name}}
             </span>
+            <div>
+                <a href="#modal1" class="delete_task_btn waves-effect waves-light btn btn_small modal-trigger">Delete</a>
+            </div>
 
         </div>
     </li>
     {% endfor %}
 </ul>
 
-
-<a href="add_entry.html" class="material-icons">add</a>
- 
+<div>
+    <a href="{{ url_for("add_entry")}}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+</div>
 {% endblock %}

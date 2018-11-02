@@ -1,6 +1,25 @@
 
-.home-button {
-    height: 200px;
-    width: 200px;
-    border-radius: 20px;
+a.waves-effect.waves-light.btn-large {
+    color: white;
+    background-color: yellow;
 }
+
+a.waves-effect.waves-light.btn-large {
+    background-color: green;
+    border-radius: 50px;
+    height: 54px;
+    width: 200px;
+}
+
+a.btn-floating.btn-large.waves-effect.waves-light.red {
+    height: 50px;
+    width: 50px;
+}
+
+
+
+/*body {*/
+/*    background-image: url("/static/images/golf2.jpeg");*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*}*/
