@@ -1,25 +1,43 @@
+/*---base.html---*/
 
-a.waves-effect.waves-light.btn-large {
-    color: white;
-    background-color: yellow;
+
+
+
+
+
+/*---home.html---*/
+
+.bg {
+    background-color: red;
 }
 
-a.waves-effect.waves-light.btn-large {
-    background-color: green;
-    border-radius: 50px;
-    height: 54px;
-    width: 200px;
-}
-
-a.btn-floating.btn-large.waves-effect.waves-light.red {
-    height: 50px;
-    width: 50px;
+.col-centered{
+    margin-top: 25px;
+    text-align: center;
 }
 
 
+/*---scores.html---*/
+.font {
+    color:red;
+}
 
-/*body {*/
-/*    background-image: url("/static/images/golf2.jpeg");*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: cover;*/
-/*}*/
+
+
+
+/*---add_entry.html---*/
+
+
+
+
+
+
+/*---edit_entry.html---*/
+
+
+
+
+
+
+
+

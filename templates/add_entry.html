@@ -1,91 +1,74 @@
 {% extends 'base.html' %} {% block content %}
 <h3>Add Score Entry</h3>
 <div class="row">
-    <form method="POST" class="col s12" enctype='multipart/form-data'>
+    <form method="POST" class="col-sm-12" enctype='multipart/form-data'>
         <div class="row">
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">ac_unit</i>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend mb-3">
                     <select id="province_name" name="province_name">
                   <option value="" disabled selected>Choose Province</option>
                   {% for p in provinces %}
                       <option value="{{p}}">{{p}}</option>
                   {% endfor %}
                 </select>
-                    <label>Province</label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="course_name" >Course</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="course_name">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="location_name" >Location</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="location_name">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="par_name" >Par</span>
+                    </div>
+                    <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="par_name">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="gross_score_name" >Gross Score</span>
+                    </div>
+                    <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="gross_score_name">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="handicap_name" >Handicap</span>
+                    </div>
+                    <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="handicap_name">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="net_score_name" >Net Score</span>
+                    </div>
+                    <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="net_score_name" disabled>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="weather_name" >Weather</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="weather_name">
+                </div>
+                <div>
+                    <input id="datepicker" width="276" name="date_name" />
+                    <script>
+                        $('#datepicker').datepicker({
+                            uiLibrary: 'bootstrap4'
+                        });
+                    </script>
+                </div>
+                <div class="container mt-3">
+                    <div class="row">
+                        <button class="btn btn-danger" type="submit">Add Task
+                    </button>
+                    </div>
                 </div>
             </div>
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="course_name" name="course_name" type="text">
-                <label for="icon_prefix">Course</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="location_name" name="location_name" type="text">
-                <label for="icon_telephone">Location</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="par_name" name="par_name" type="number">
-                <label for="icon_telephone">Par</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="gross_score_name" name="gross_score_name" type="number">
-                <label for="icon_telephone">Gross Score</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="handicap_name" name="handicap_name" type="number">
-                <label for="icon_telephone">Handicap</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="net_score_name" name="net_score_name" type="number">
-                <label for="icon_telephone">Net Score</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="weather_name" name="weather_name" type="text">
-                <label for="icon_telephone">Weather</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">today</i>
-                <input id="due_date" name="date_name" type="text" class="datepicker">
-                <label for="icon_prefix">Date</label>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="file-field input-field">
-                <div class="btn">
-                    <span>Image</span>
-                    <input type="file" name="image">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit">Add Task
-                <i class="material-icons right">playlist_add</i>
-             </button>
         </div>
     </form>
 </div>

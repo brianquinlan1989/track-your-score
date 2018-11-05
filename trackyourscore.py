@@ -59,11 +59,13 @@ def edit_entry(province, entry_id):
         provinces = get_province_names() 
         return render_template("edit_entry.html", entry=the_entry, provinces=provinces)
 
-@app.route("/scores/<province>//delete", methods=["POST"])
+@app.route("/scores/<province>/delete", methods=["POST"])
 def delete_entry(province):
-    entry_id = request.form['entry_id']
-    mongo.db[province].remove({"_id":ObjectId(entry_id)})
+    id_to_delete = request.form['entry_id']
+    print(id_to_delete)
+    mongo.db[province].remove({"_id":ObjectId(id_to_delete)})
     return redirect(url_for("show_entries_by_province", province=province))
+    # return "Test"
   
     
 if __name__ == "__main__":

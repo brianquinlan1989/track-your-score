@@ -3,10 +3,9 @@
 <h3>Edit Task</h3>
 
 <div class="row">
-    <form method="POST" class="col s12">
+    <form method="POST" class="col sm-12">
         <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">poll</i>
+            <div class="input-group mb-3">
                 <select id="province" name="province_name">
           <option value="" disabled selected>Choose Province</option>
           {% for p in provinces %} 
@@ -17,83 +16,90 @@
               {% endif %}
           {% endfor %}
           </select>
-                <label>Task Province</label>
             </div>
 
         </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="course_name" name="course_name">Course</span>
+            </div>
+            <input id="course_name" name="course_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ entry.course_name }}">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="location_name" name="location_name">Location</span>
+            </div>
+            <input id="location_name" name="location_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ entry.location_name }}">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="par_name" name="par_name">Par</span>
+            </div>
+            <input id="par_name" name="par_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ entry.par_name }}">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="gross_score_name" name="gross_score_name">Gross Score</span>
+            </div>
+            <input id="gross_score_name" name="gross_score_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ entry.gross_score_name }}">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="handicap_name" name="handicap_name">Handicap</span>
+            </div>
+            <input id="handicap_name" name="handicap_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ entry.handicap_name }}">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="net_score_name" name="net_score_name">Net Score</span>
+            </div>
+            <input id="net_score_name" name="net_score_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ entry.net_score_name }}" disabled>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="weather_name" name="weather_name">Weather</span>
+            </div>
+            <input id="weather_name" name="weather_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ entry.weather_name }}">
+        </div>
+        <div>
+            <input id="datepicker" name="date_name" width="276" value="{{ entry.date_name }}" />
+            <script>
+                $('#datepicker').datepicker({
+                    uiLibrary: 'bootstrap4'
+                });
+            </script>
+        </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="course_name" name="course_name" type="text" class="validate" value="{{ entry.course_name }}">
-                <label for="icon_prefix">Course</label>
+
+
+
+        <div class="container mt-3">
+            <div class="row">
+                <button class="btn btn-danger" type="submit">Add Task</button>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="location_name" name="location_name" type="text" value="{{ entry.location_name }}">
-                <label for="icon_telephone">Location</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="par_name" name="par_name" type="number" value="{{ entry.par_name }}">
-                <label for="icon_telephone">Par</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="gross_score_name" name="gross_score_name" type="number" value="{{ entry.gross_score_name }}">
-                <label for="icon_telephone">Gross Score</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="handicap_name" name="handicap_name" type="number" value="{{ entry.handicap_name }}">
-                <label for="icon_telephone">Handicap</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="net_score_name" name="net_score_name" type="number" value="{{ entry.net_score_name }}">
-                <label for="icon_telephone">Net Score</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">ac_unit</i>
-                <input id="weather_name" name="weather_name" type="text"value="{{ entry.weather_name }}">
-                <label for="icon_telephone">Weather</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">today</i>
-                <input id="due_date" name="date_name" type="text" class="datepicker" value="{{ entry.date_name }}">
-                <label for="icon_prefix">Date</label>
-            </div>
-        </div>
-        
-        <button class="btn waves-effect waves-light" type="submit">Save
-      <i class="material-icons right">playlist_add</i>
-    </button>
-  </form>
+    </form>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
         date_name = Date.parse('{{entry.date_name}}');
-        $('#date_name').pickadate('picker').set('select', due_date, {format: "dd/mm/yyyy"}).trigger('change');
-    });    
+        $('#date_name').pickadate('picker').set('select', date_name, { format: "dd/mm/yyyy" }).trigger('change');
+    });
 </script>
 
 {% endblock %}
-
